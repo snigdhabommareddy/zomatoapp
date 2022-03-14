@@ -1,0 +1,21 @@
+a{
+    text-decoration: none;
+}
+.card{
+    height:300px;
+    box-shadow: 5px 7px 5px 7px rgb(226, 226, 226);
+}
+.card:hover{
+    transform: scale(1.1);
+}
+.card-body{
+    text-align: center;
+    text-decoration: none;
+}
+.link:hover{
+    text-decoration: none;
+    color:brown;
+}
+.card-img-top{
+    height:60%;
+}

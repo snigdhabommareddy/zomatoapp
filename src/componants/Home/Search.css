@@ -1,0 +1,52 @@
+#search{
+    height: 500px;
+    background-image:url("https://i.ibb.co/cQGM6J7/carousel1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 500px;
+}
+#logo{
+    height:150px;
+    width:150px;
+    background-color: white;
+    border-radius: 50%;
+    margin-top:4%;
+    position: absolute;
+    font-size:80px;
+    color:rgb(8, 119, 8);
+    animation: movelogo 20s infinite;
+}
+
+@keyframes movelogo {
+    0% {margin-left: 45%;}
+    20% {margin-left: 40%;}
+    60% {margin-left: 45%;}
+    85% {margin-left: 40%;}
+    100% {margin-left: 45%;}
+}
+#logo > span {
+    margin-left: 30%;
+    margin-top: 8%;
+    position: absolute;
+}
+#heading{
+    font-size:40px;
+    position:relative;
+    top: 50%;
+    left: 0;
+    right: 0;
+}
+.dropdown{
+    height:60px;
+    width:80%;
+    position:relative;
+    top:60%;
+    left:20%;
+    margin-bottom: 5%;
+}
+
+select{
+    height:50px;
+    width:35%
+}
+

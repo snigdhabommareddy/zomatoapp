@@ -1,0 +1,26 @@
+.imageClass > img{
+    height: 450px;
+    width:95%;
+}
+.fa-star,.fa-star-half-full{
+    color:rgb(236, 195, 13)
+}
+.icons{
+    display: inline-block;
+    margin-left:2%
+}
+.icons >img{
+    width: 100px;
+    height:100px;
+}
+
+#stock{
+    font-size: 30px;
+    color:green
+}
+
+.button{
+    height:48px;
+    width:250px;
+    font-size:20px;
+}
