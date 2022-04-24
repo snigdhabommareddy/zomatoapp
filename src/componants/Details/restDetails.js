@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import MenuDisplay from './menuDisplay';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import './details.css';
+import Header from '../../header';
 
 const url = "https://zomatonode.herokuapp.com/details"
 const menuUrl = "https://zomatonode.herokuapp.com/menu"
@@ -15,15 +17,27 @@ class Details extends Component {
         this.state = {
             details: '',
             menuList: '',
-            userItem: ''
+            userItem: '',
+            mealId: sessionStorage.getItem('mealId')
         }
     }
 
+    addToCart = (data) => {
+        console.log(">>>>>", data)
+        this.setState({ userItem: data })
+    }
+
+    proceed = () => {
+        sessionStorage.setItem('menu',this.state.userItem)
+        this.props.history.push(`/placeOrder/${this.state.details.restaurant_name}`)
+    }
+    
     render() {
-        
+
         let { details } = this.state
         return (
             <>
+            <Header/>
                 <div className="container mt-4">
                     <div className='row'>
                         <div className="col-lg-6 col-md-6 col-12">
@@ -50,7 +64,7 @@ class Details extends Component {
                                         <img src="https://i.ibb.co/2FbpqtH/sentizied.jpg" alt="sentizied" />
                                     </div>
                                     <div class="icons">
-                                        <img src="https://i.ibb.co/s56LLF9/homedelivery.png" />
+                                        <img src="https://i.ibb.co/s56LLF9/homedelivery.png" alt="delivery" />
                                     </div>
                                 </div>
                                 <div>
@@ -72,11 +86,16 @@ class Details extends Component {
                                         </TabPanel>
 
                                     </Tabs>
+                                    <Link to={`/listing/${this.state.mealId}`} className="btn btn-danger">
+                                        Back
+                                    </Link> &nbsp;
+                                    <button className="btn btn-success" onClick={this.proceed}>Proceed</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <MenuDisplay />
+                    <MenuDisplay menuData={this.state.menuList}
+                        finalOrder={(data) => { this.addToCart(data) }} />
                 </div>
 
             </>
@@ -88,7 +107,7 @@ class Details extends Component {
         let restid = this.props.location.search.split('=')[1];
         let response = await axios.get(`${url}/${restid}`)
         let mealData = await axios.get(`${menuUrl}/${restid}`)
-        this.setState({ details: response.data[0], menuList: mealData })
+        this.setState({ details: response.data[0], menuList: mealData.data })
     }
 }
 

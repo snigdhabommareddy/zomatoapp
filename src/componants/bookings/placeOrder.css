@@ -1,0 +1,17 @@
+.ordercard{
+    display:inline-block
+}
+.ordercard>img{
+    height:200px;
+    width:100%;
+}
+.background{
+    border:2px solid rgb(48, 78, 168);
+    border-radius: 5px;
+    padding:30px;
+}
+.heading{
+    background-color: rgb(48, 78, 168);
+    color:white;
+    border-radius: 5px;
+}
